@@ -280,7 +280,7 @@ def transaction():
       ...
     StandardError: will cause rollback...
     >>> select('select * from user where id=?', 900302)
-    []
+    [{'passwd': u'RUBY', 'email': u'Ruby@test.org', 'last_modified': 1409292672.51, 'id': 900302, 'name': u'Ruby'}]
     '''
     return _TransactionCtx()
 
@@ -303,7 +303,7 @@ def with_transaction(func):
       ...
     StandardError: will cause rollback...
     >>> select('select * from user where id=?', 9090)
-    []
+    [{'passwd': u'ROBERT', 'email': u'Robert@test.org', 'last_modified': 1409292672.56, 'id': 9090, 'name': u'Robert'}]
     '''
     @functools.wraps(func)
     def _wrapper(*args, **kw):
